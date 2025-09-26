@@ -1,0 +1,221 @@
+:root {
+  color-scheme: light dark;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  --bg: #0f172a;
+  --card: rgba(15, 23, 42, 0.6);
+  --card-light: rgba(255, 255, 255, 0.85);
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --border: rgba(148, 163, 184, 0.3);
+  --text: #e2e8f0;
+  --text-dark: #0f172a;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #020617, #0f172a 60%, #1e293b);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+header h1 {
+  margin-bottom: 0.3rem;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+header .tagline {
+  margin: 0;
+  opacity: 0.8;
+}
+
+main {
+  flex: 1;
+  width: min(960px, 92vw);
+  margin: 0 auto 3rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+section {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(16px);
+}
+
+section h2,
+section h3 {
+  margin-top: 0;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.8);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+input:focus,
+select:focus,
+button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+button {
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.controls {
+  display: grid;
+  gap: 1rem;
+}
+
+.controls .input-group {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.button-row {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.status {
+  display: grid;
+  gap: 0.75rem;
+}
+
+#instance-status span,
+#fetch-status span {
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.16);
+  margin-right: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+#instance-status .ok { background: rgba(34, 197, 94, 0.2); }
+#instance-status .fail { background: rgba(248, 113, 113, 0.2); }
+#login-status.error { color: #fca5a5; }
+
+#summary dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem 1.5rem;
+  margin: 0;
+}
+
+#summary dt {
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+#summary dd {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+thead th {
+  text-align: left;
+  padding: 0.75rem;
+}
+
+tbody td {
+  border-top: 1px solid var(--border);
+  padding: 0.75rem;
+  vertical-align: top;
+}
+
+tbody td:first-child {
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (min-width: 720px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #login-section,
+  #app {
+    grid-column: 1 / -1;
+  }
+
+  .controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .controls .input-group:nth-child(4) {
+    grid-column: span 2;
+  }
+
+  .button-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@supports (backdrop-filter: blur(12px)) {
+  section {
+    background: var(--card-light);
+    color: var(--text-dark);
+  }
+
+  input,
+  select,
+  button {
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--text-dark);
+  }
+}
